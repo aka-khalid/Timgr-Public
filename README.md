@@ -1,6 +1,6 @@
 # Timgr - Public Release
 
-![Timgr Logo](Timgr_splash.jpeg)
+![Timgr Logo](SplashScreen.jpeg)
 
 ## Overview
 **Timgr** is a Python-based desktop application designed to streamline employee timesheet management for businesses of all sizes. By processing data from fingerprint identification systems, Timgr converts raw data into organized, readable, and information-rich reports. This transformation significantly reduces the time HR professionals spend on timesheet processing, allowing them to complete in minutes what once took hours.
