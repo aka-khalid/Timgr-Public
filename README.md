@@ -1,11 +1,15 @@
+<div align="center">
+
 # Timgr - Public Release
 
-![Timgr Logo](Logo.png)
+<img src="Logo.png" alt="Timgr Logo" width="250">
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue)
 ![GUI](https://img.shields.io/badge/GUI-PySimpleGUI-green)
 ![Status](https://img.shields.io/badge/Status-Active-success)
 ![License](https://img.shields.io/badge/License-Proprietary-red)
+
+</div>
 
 ## Table of Contents
 - [Overview](#overview)
