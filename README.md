@@ -1,145 +1,117 @@
-<div align="center">
+# Timgr
 
-# Timgr - Public Release
+<img src="Logo.png" alt="Timgr logo" width="110" />
 
-<img src="Logo.png" alt="Timgr Logo" width="250">
+[![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011%20x64-blue)](#requirements)
+[![Offline](https://img.shields.io/badge/Network-none-success)](#privacy)
+[![License](https://img.shields.io/badge/License-Proprietary-red)](#license)
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue)
-![GUI](https://img.shields.io/badge/GUI-PySimpleGUI-green)
-![Status](https://img.shields.io/badge/Status-Active-success)
-![License](https://img.shields.io/badge/License-Proprietary-red)
+**Timgr** turns a fingerprint-device attendance export into a reviewed,
+period-based timesheet workbook. Pick the export, review what the app flagged,
+set the pay period and the pay rules, and save an Excel file that is ready for
+payroll.
 
-</div>
-
-## Table of Contents
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [How It Works](#how-it-works)
-- [FAQ](#faq)
-- [License](#license)
+Everything runs on your own PC. There is no account, no server, no telemetry,
+and the app makes no network requests.
 
 ---
 
-## Overview
+## Download
 
-**Timgr** is a Python-based desktop application designed to streamline employee timesheet management for businesses of all sizes. By processing data from fingerprint identification systems, Timgr transforms raw biometric records into comprehensive, accurate timesheets with minimal manual intervention. The application automates the tedious process of timesheet compilation, reducing administrative overhead and enabling HR teams to focus on strategic initiatives.
+Take the current build from **[Releases](../../releases/latest)**.
 
----
+| File | Version | Size | SHA-256 |
+| --- | --- | --- | --- |
+| `Timgr_1.3.0_x64-setup.exe` | 1.3.0 | 5,456,463 bytes (5.20 MiB) | `AFF52823E20448064032910DF6793C433A04231F9DBF5BBF2BFAEE42302AD875` |
 
-## Key Features
+`SHA256SUMS.txt` is attached to the same release. Check the file before you run
+it:
 
-- **Efficient Data Processing**: Quickly transforms raw fingerprint data into refined timesheets, saving valuable HR time and reducing manual data entry errors.
+```powershell
+Get-FileHash .\Timgr_1.3.0_x64-setup.exe -Algorithm SHA256
+```
 
-- **Enhanced Insights**: Provides detailed insights into employee shifts with color-coded highlights for easy identification of leaves, absences, holidays, and discrepancies at a glance.
-
-- **User-Friendly Interface**: Built using PySimpleGUI, Timgr offers an intuitive and easy-to-navigate user experience that requires minimal training.
-
-- **Focus on Strategic Initiatives**: By automating time-consuming administrative tasks, Timgr enables HR teams to redirect their efforts toward talent management, organizational development, and employee engagement.
-
-- **Comprehensive Reporting**: Generate detailed timesheet reports for payroll, compliance, and attendance analysis.
-
----
+The result must match the hash above.
 
 ## Requirements
 
-- **Python**: 3.8 or higher
-- **Operating System**: Windows, macOS, or Linux
-- **RAM**: Minimum 2GB (4GB+ recommended for large datasets)
-- **Fingerprint System**: Compatible biometric data export format (CSV/Excel)
+- Windows 10 (1809 or newer) or Windows 11, 64-bit.
+- Microsoft Edge WebView2. Windows 11 and any updated Windows 10 already have
+  it. The installer downloads it only if it is missing, so a machine without
+  WebView2 needs internet once.
+- About 200 MB free disk space. The app itself is small; most of that is the
+  WebView2 runtime.
+- No administrator rights. The app installs for the current Windows user.
 
-### Python Dependencies
-- PySimpleGUI
-- pandas
-- openpyxl
+## Install
 
----
+1. Run `Timgr_1.3.0_x64-setup.exe`.
+2. Windows SmartScreen shows **"Windows protected your PC"** because the
+   installer is not code-signed. Choose **More info**, then **Run anyway**.
+3. The app installs for the current user and adds a Start-menu shortcut.
 
-## Installation
+Installing a newer version over an older one keeps your settings, drafts and
+export history.
 
-This repository is intended primarily for uploading and managing the Timgr setup file. 
+## First run and licensing
 
-**Important**: If you do not have the required password or access credentials, please refrain from attempting to install the application.
+Saving an Excel file needs a license. The license is a small signed file that
+is checked offline on this PC; nothing about it is sent anywhere.
 
-### For Authorized Users
+1. Open **License** in the app. If your license is tied to one PC, copy the
+   **Device code** shown there and send it to whoever issues your license.
+2. Import the `.timgr-license` file you were sent, or paste its text.
+3. The screen reads **This device is licensed**.
 
-1. Download the setup file from this repository
-2. Extract the contents to your desired location
-3. Ensure Python 3.8+ is installed on your system
-4. Install required dependencies:
-   ```bash
-   pip install PySimpleGUI pandas openpyxl
-   ```
-5. Run the application using the provided launcher or:
-   ```bash
-   python timgr.py
-   ```
+The app has an English and an Arabic interface, including right-to-left layout.
 
-For detailed setup assistance, please contact your organization's IT department.
+## What's new in 1.3.0
 
----
+- **A signing key can be authorized without rebuilding the app.** The app now
+  carries a root key that can delegate a daily signing key, so a new key can be
+  issued and used without shipping a new installer.
+- **Delegated licenses say so.** A license signed by a delegated key shows
+  **ISSUED UNDER** with the root that authorized it.
+- **Damage is named.** An edited delegation reads "This license is damaged or
+  was changed"; a missing or repeated one reads "This license's signing chain
+  is not valid". A failed import never replaces the license already installed.
 
-## Usage
+The full notes are in the release description. The app's pipeline, review
+screen and workbook output are unchanged from the previous build.
 
-### Quick Start
+## Verifying a release
 
-1. **Launch Timgr**: Open the application using the desktop shortcut or command line
-2. **Import Data**: Load your fingerprint system data (typically CSV or Excel format)
-3. **Configure Settings**: Set up holidays, leave policies, and shift parameters
-4. **Process Data**: Let Timgr automatically generate timesheets with color-coded insights
-5. **Export & Review**: Generate reports and export data for payroll integration
+Each release lists the SHA-256 of the installer and attaches `SHA256SUMS.txt`.
+Verify the hash before installing, especially if the file came through email or
+a chat app.
 
-### Example Workflow
+## Privacy
 
-- Import biometric attendance data from your fingerprint system
-- Review auto-generated timesheets with color-coded highlights for anomalies
-- Adjust any discrepancies manually if needed
-- Export final timesheets for payroll processing
+- No account, no sign-in, no telemetry, no crash reporting.
+- The attendance file is read on your PC and never uploaded.
+- The app makes no network requests. The only network use anywhere is the
+  installer fetching WebView2 when Windows is missing it.
+- Data lives in `%APPDATA%\com.timgr.desktop` (settings, drafts, export history,
+  the installed license). Delete that folder to remove it.
 
----
+## Uninstall
 
-## How It Works
+Windows **Settings > Apps > Timgr > Uninstall**, or the Start-menu uninstaller.
+Drafts and history in `%APPDATA%\com.timgr.desktop` are kept; delete that folder
+to remove them too.
 
-Timgr streamlines the timesheet management process in three key steps:
+## Older versions
 
-1. **Data Ingestion**: Accepts raw data exports from fingerprint identification systems
-2. **Intelligent Processing**: Analyzes biometric records to identify shifts, leaves, absences, and holidays
-3. **Visual Output**: Generates color-coded timesheets that highlight important information for quick review and decision-making
-
----
-
-## FAQ
-
-**Q: Which fingerprint systems are compatible with Timgr?**
-A: Timgr supports most standard biometric systems that can export data in CSV or Excel format. Check with your system administrator for export options.
-
-**Q: Can I customize shift timings and holidays?**
-A: Yes, Timgr includes configuration options for custom shift timings, holidays, and leave policies to match your organization's needs.
-
-**Q: Is my data secure?**
-A: Timgr processes data locally on your computer. Always ensure you follow your organization's data security policies when handling employee information.
-
-**Q: Can I export the processed timesheets?**
-A: Yes, Timgr allows you to export timesheets in multiple formats suitable for payroll and HR systems.
-
----
+The **v2.5.x** releases are the earlier Python version of Timgr. They are kept
+for reference. The current app is the Windows installer listed above, and it is
+a different program: no Python, no dependencies to install.
 
 ## License
 
-This software is proprietary and confidential. Unauthorized copying, modification, or distribution is strictly prohibited.
-
-For licensing inquiries, please contact the development team.
-
----
-
-## Contact & Support
-
-For questions, issues, or support, please reach out to your organization's HR or IT department.
-
-**Repository**: [Timgr-Public](https://github.com/aka-khalid/Timgr-Public)
+This software is proprietary. Unauthorized copying, modification or
+distribution is prohibited. For licensing questions, contact the development
+team.
 
 ---
 
-*Last Updated: May 2026*
+*Last updated: November 2026*
