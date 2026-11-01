@@ -20,15 +20,15 @@ An offline Windows app. No account, no server, no telemetry.
 
 | Step | What happens |
 | --- | --- |
-| **1. Open the export** | Read the `.xls` or `.xlsx` file that came out of the fingerprint device. |
-| **2. Review what it flagged** | Duplicate taps are merged, punches are paired into shifts, and anything odd is put in front of you instead of being guessed at. |
-| **3. Set the period and rules** | The pay period, working hours, overtime, days off, and the pay rules for that period. |
-| **4. Save the workbook** | An Excel file in the layout payroll already expects. |
+| **1. File** | Open the `.xls` or `.xlsx` export from the fingerprint device. |
+| **2. Review** | Duplicate taps are merged, punches are paired into shifts, and anything odd is put in front of you instead of being guessed at. |
+| **3. Pay period** | The pay period, working hours, overtime, days off, and the pay rules for that period. |
+| **4. Export** | An Excel file in the layout payroll already expects. |
 
 <p align="center">
   <img src="screenshot-file.png" alt="The File screen after loading an export: 877 attendance rows, 14 employees, 198 items to review, 104 fixed automatically" width="100%" />
   <br />
-  <sub>One export loaded: 877 rows, 14 employees, 104 duplicate taps fixed on their own, 198 items left to answer.</sub>
+  <sub>One export loaded: 877 rows, 14 employees, 193 duplicate taps merged, 104 items fixed on their own, 198 left to answer.</sub>
 </p>
 
 The file is read on the PC and the workbook is written on the PC. Nothing is uploaded.
