@@ -1,117 +1,101 @@
+<div align="center">
+
+<img src="Logo.png" alt="Timgr" width="96" height="96" />
+
 # Timgr
 
-<img src="Logo.png" alt="Timgr logo" width="110" />
+**Turn a fingerprint attendance export into a payroll-ready timesheet.**
 
-[![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011%20x64-blue)](#requirements)
-[![Offline](https://img.shields.io/badge/Network-none-success)](#privacy)
-[![License](https://img.shields.io/badge/License-Proprietary-red)](#license)
+An offline Windows app. No account, no server, no telemetry.
 
-**Timgr** turns a fingerprint-device attendance export into a reviewed,
-period-based timesheet workbook. Pick the export, review what the app flagged,
-set the pay period and the pay rules, and save an Excel file that is ready for
-payroll.
+<img alt="Windows 10 and 11, 64-bit" src="https://img.shields.io/badge/Windows-10%20%7C%2011%20x64-0078D4?logo=windows&logoColor=white"> <img alt="No network" src="https://img.shields.io/badge/network-none-2EA44F"> <img alt="Version 1.3.0" src="https://img.shields.io/badge/version-1.3.0-BE3144"> <img alt="Proprietary license" src="https://img.shields.io/badge/license-proprietary-6E7781">
 
-Everything runs on your own PC. There is no account, no server, no telemetry,
-and the app makes no network requests.
+**[Download for Windows](../../releases/latest)** &nbsp;·&nbsp; [Release notes](../../releases/latest) &nbsp;·&nbsp; [Licensing](#licensing)
 
----
+<img src="screenshot-review.png" alt="Timgr's Review screen: 198 items found, 94 still needing an answer" width="100%" />
+
+</div>
+
+## What it does
+
+| Step | What happens |
+| --- | --- |
+| **1. Open the export** | Read the `.xls` or `.xlsx` file that came out of the fingerprint device. |
+| **2. Review what it flagged** | Duplicate taps are merged, punches are paired into shifts, and anything odd is put in front of you instead of being guessed at. |
+| **3. Set the period and rules** | The pay period, working hours, overtime, days off, and the pay rules for that period. |
+| **4. Save the workbook** | An Excel file in the layout payroll already expects. |
+
+<p align="center">
+  <img src="screenshot-file.png" alt="The File screen after loading an export: 877 attendance rows, 14 employees, 198 items to review, 104 fixed automatically" width="100%" />
+  <br />
+  <sub>One export loaded: 877 rows, 14 employees, 104 duplicate taps fixed on their own, 198 items left to answer.</sub>
+</p>
+
+The file is read on the PC and the workbook is written on the PC. Nothing is uploaded.
 
 ## Download
 
-Take the current build from **[Releases](../../releases/latest)**.
+**[Timgr 1.3.0 for Windows](../../releases/latest)** is the current build: one installer, about 5 MB, for Windows 10 and 11 on 64-bit.
 
-| File | Version | Size | SHA-256 |
-| --- | --- | --- | --- |
-| `Timgr_1.3.0_x64-setup.exe` | 1.3.0 | 5,456,463 bytes (5.20 MiB) | `AFF52823E20448064032910DF6793C433A04231F9DBF5BBF2BFAEE42302AD875` |
-
-`SHA256SUMS.txt` is attached to the same release. Check the file before you run
-it:
+Check the file before you run it. The release also carries `SHA256SUMS.txt` with the same hash.
 
 ```powershell
 Get-FileHash .\Timgr_1.3.0_x64-setup.exe -Algorithm SHA256
 ```
 
-The result must match the hash above.
+The result must be:
 
-## Requirements
-
-- Windows 10 (1809 or newer) or Windows 11, 64-bit.
-- Microsoft Edge WebView2. Windows 11 and any updated Windows 10 already have
-  it. The installer downloads it only if it is missing, so a machine without
-  WebView2 needs internet once.
-- About 200 MB free disk space. The app itself is small; most of that is the
-  WebView2 runtime.
-- No administrator rights. The app installs for the current Windows user.
+```text
+AFF52823E20448064032910DF6793C433A04231F9DBF5BBF2BFAEE42302AD875
+```
 
 ## Install
 
 1. Run `Timgr_1.3.0_x64-setup.exe`.
-2. Windows SmartScreen shows **"Windows protected your PC"** because the
-   installer is not code-signed. Choose **More info**, then **Run anyway**.
-3. The app installs for the current user and adds a Start-menu shortcut.
+2. Windows SmartScreen shows **"Windows protected your PC"** because the installer is not code-signed yet. Choose **More info**, then **Run anyway**.
+3. It installs for the current Windows user, with a Start-menu shortcut. No admin prompt.
 
-Installing a newer version over an older one keeps your settings, drafts and
-export history.
+Needs Windows 10 (1809 or newer) or Windows 11, 64-bit, and about 200 MB of disk. Most of that space is Microsoft's WebView2 runtime; Windows 11 and updated Windows 10 already have it, and the installer only downloads it when it is missing.
 
-## First run and licensing
+Installing a newer version over an older one keeps your settings, drafts, and export history.
 
-Saving an Excel file needs a license. The license is a small signed file that
-is checked offline on this PC; nothing about it is sent anywhere.
+## Licensing
 
-1. Open **License** in the app. If your license is tied to one PC, copy the
-   **Device code** shown there and send it to whoever issues your license.
-2. Import the `.timgr-license` file you were sent, or paste its text.
-3. The screen reads **This device is licensed**.
+Saving a workbook needs a license: one small signed file, checked on this PC, never sent anywhere.
 
-The app has an English and an Arabic interface, including right-to-left layout.
+1. Open **License** in the app. If the license will be tied to this PC, copy the **Device code** shown there.
+2. Send that code to whoever issues your license.
+3. Import the `.timgr-license` file you get back, or paste its text. The screen then reads **This device is licensed**.
+
+The interface is in English and Arabic, with full right-to-left layout.
 
 ## What's new in 1.3.0
 
-- **A signing key can be authorized without rebuilding the app.** The app now
-  carries a root key that can delegate a daily signing key, so a new key can be
-  issued and used without shipping a new installer.
-- **Delegated licenses say so.** A license signed by a delegated key shows
-  **ISSUED UNDER** with the root that authorized it.
-- **Damage is named.** An edited delegation reads "This license is damaged or
-  was changed"; a missing or repeated one reads "This license's signing chain
-  is not valid". A failed import never replaces the license already installed.
+- **A signing key no longer needs a new installer.** The app carries a root key that can authorize a daily signing key, so keys can be rotated without shipping a new build.
+- **Delegated licenses say so.** A license signed by a delegated key shows **ISSUED UNDER** with the root that authorized it.
+- **Damage is named.** An edited delegation reads "This license is damaged or was changed"; a missing or repeated one reads "This license's signing chain is not valid". A failed import never replaces the license already on the machine.
 
-The full notes are in the release description. The app's pipeline, review
-screen and workbook output are unchanged from the previous build.
-
-## Verifying a release
-
-Each release lists the SHA-256 of the installer and attaches `SHA256SUMS.txt`.
-Verify the hash before installing, especially if the file came through email or
-a chat app.
+The review screen, the pipeline, and the saved workbook are unchanged from 1.2.x. Full notes are on the [release page](../../releases/latest).
 
 ## Privacy
 
 - No account, no sign-in, no telemetry, no crash reporting.
-- The attendance file is read on your PC and never uploaded.
-- The app makes no network requests. The only network use anywhere is the
-  installer fetching WebView2 when Windows is missing it.
-- Data lives in `%APPDATA%\com.timgr.desktop` (settings, drafts, export history,
-  the installed license). Delete that folder to remove it.
+- The attendance file never leaves the PC, and the app makes no network requests.
+- The only network use anywhere is the installer fetching WebView2 when Windows is missing it.
+- Data lives in `%APPDATA%\com.timgr.desktop`: settings, drafts, export history, the installed license. Delete that folder to remove it.
 
 ## Uninstall
 
-Windows **Settings > Apps > Timgr > Uninstall**, or the Start-menu uninstaller.
-Drafts and history in `%APPDATA%\com.timgr.desktop` are kept; delete that folder
-to remove them too.
+Windows **Settings > Apps > Timgr > Uninstall**, or the Start-menu uninstaller. Drafts and history in `%APPDATA%\com.timgr.desktop` are kept; delete that folder to remove them too.
 
 ## Older versions
 
-The **v2.5.x** releases are the earlier Python version of Timgr. They are kept
-for reference. The current app is the Windows installer listed above, and it is
-a different program: no Python, no dependencies to install.
+The **v2.5.x** releases are the earlier Python version of Timgr, kept for reference. The current app is the Windows installer above and is a different program: no Python, nothing to install first.
 
 ## License
 
-This software is proprietary. Unauthorized copying, modification or
-distribution is prohibited. For licensing questions, contact the development
-team.
+This software is proprietary. Unauthorized copying, modification, or distribution is prohibited. For licensing questions, contact the development team.
 
 ---
 
-*Last updated: November 2026*
+<sub>Last updated November 2026. Found a problem? Open an issue.</sub>
