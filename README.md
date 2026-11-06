@@ -76,9 +76,9 @@ The export step shows the sheet before anything is written: totals, worked shift
 
 **[Timgr 1.3.0 for Windows](../../releases/latest)** is the current build: one installer, for Windows 10 and 11 on 64 bit.
 
-| File | Size | SHA-256 |
-| --- | --- | --- |
-| `Timgr_1.3.0_x64-setup.exe` | 5,456,463 bytes | `AFF52823E20448064032910DF6793C433A04231F9DBF5BBF2BFAEE42302AD875` |
+| File | Size |
+| --- | --- |
+| `Timgr_1.3.0_x64-setup.exe` | 5,456,463 bytes (5.2 MB) |
 
 `SHA256SUMS.txt` is attached to the same release. Check the file before you run it:
 
@@ -86,7 +86,11 @@ The export step shows the sheet before anything is written: totals, worked shift
 Get-FileHash .\Timgr_1.3.0_x64-setup.exe -Algorithm SHA256
 ```
 
-The result must match the hash above.
+The result must be:
+
+```text
+AFF52823E20448064032910DF6793C433A04231F9DBF5BBF2BFAEE42302AD875
+```
 
 ## Install
 
