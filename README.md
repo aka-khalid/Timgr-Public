@@ -169,10 +169,6 @@ Yes. Every export is kept in **History**, with the file you saved it to.
 
 Windows **Settings > Apps > Timgr > Uninstall**, or the Start-menu uninstaller. Drafts and history in `%APPDATA%\com.timgr.desktop` are kept; delete that folder to remove them too.
 
-## Older versions
-
-The **v2.5.x** releases are the earlier Python version of Timgr, kept for reference. The current app is the Windows installer above and is a different program: no Python, nothing to install first.
-
 ## License
 
 This software is proprietary. Unauthorized copying, modification, or distribution is prohibited. For licensing questions, contact the development team.
